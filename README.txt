@@ -28,7 +28,7 @@ Errors in the HTTP call throw a Geocoder::ConnectionError
 
 Your google API key is required.  You may set this in one of two ways.
 
-1. Set the class variable with Geocoder.key = 'xxxxxx'
+1. Set the class variable with Geocoder::Client.key = 'xxxxxx'
  $ Geocoder.search('My Address') # uses default key
  
 2. Send the key with your searches
