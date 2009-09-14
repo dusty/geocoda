@@ -24,7 +24,7 @@ Geocoder.first('123 My St, MyCity, NY')
  # returns a single address or throws an exception
  
 See Geocoder::Response.check_status for errors thrown depending on the results
-Errors in the HTTP call throw a Geocoder::ApiError
+Errors in the HTTP call throw a Geocoder::ConnectionError
 
 Your google API key is required.  You may set this in one of two ways.
 

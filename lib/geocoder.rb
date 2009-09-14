@@ -12,7 +12,7 @@ module Geocoder
   class InvalidMapKeyError  < MapKeyError; end
   class TooManyQueriesError < MapKeyError; end
   class UnknownError < Error; end
-  class ApiError < Error; end
+  class ConnectionError < Error; end
   
   ##
   # The current version of the application

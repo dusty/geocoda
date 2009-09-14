@@ -34,10 +34,10 @@ module Geocoder
       begin
         response = @http.get(hash_to_string(:q => address))
       rescue StandardError => e
-        raise(ApiError, e.message)
+        raise(ConnectionError, e.message)
       end
       unless response.status == 200
-        raise(ApiError, "Response Code: #{response.status}")
+        raise(ConnectionError, "Response Code: #{response.status}")
       end
       Response.new(response.body).addresses
     end
