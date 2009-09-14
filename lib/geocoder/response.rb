@@ -1,4 +1,5 @@
 module Geocoder
+  
   class Response
     attr_reader :json
     

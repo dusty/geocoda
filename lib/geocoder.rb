@@ -38,4 +38,9 @@ module Geocoder
   
 end
 
-Dir["lib/geocoder/*.rb"].each {|req| require req}
+require File.join(
+  File.expand_path(File.dirname(__FILE__)), 'geocoder', 'client'
+)
+require File.join(
+  File.expand_path(File.dirname(__FILE__)), 'geocoder', 'response'
+)
