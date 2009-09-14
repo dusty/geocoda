@@ -6,7 +6,7 @@ Used to interact with Googles Geocoding API
 == REQUIREMENTS:
 
 patron
-json_pure
+json
 
 
 == INSTALL:

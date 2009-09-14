@@ -15,7 +15,7 @@ Gem::Specification.new do |s|
   s.require_path = "lib" 
   s.has_rdoc = true 
   s.extra_rdoc_files = ["README.txt"]
-  s.add_dependency('json_pure')
+  s.add_dependency('json')
   s.add_dependency('patron')
   s.rubyforge_project = "none"
 end
