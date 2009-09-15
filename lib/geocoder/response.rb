@@ -73,7 +73,7 @@ module Geocoder
     # @return [String] street
     def street
       @street ||= @hash["AddressDetails"]["Country"]["AdministrativeArea"]\
-                       ["Locality"]["Thoroughfare"]["ThoroughfareName"]
+                  ["Locality"]["Thoroughfare"]["ThoroughfareName"] rescue nil
     end
     
     ##
@@ -82,7 +82,7 @@ module Geocoder
     # @return [String] city
     def city
      @city ||= @hash["AddressDetails"]["Country"]["AdministrativeArea"]\
-                    ["Locality"]["LocalityName"]
+               ["Locality"]["LocalityName"] rescue nil
     end
     
     ##
@@ -91,7 +91,7 @@ module Geocoder
     # @return [String] state
     def state
       @state ||= @hash["AddressDetails"]["Country"]["AdministrativeArea"]\
-                      ["AdministrativeAreaName"]
+                 ["AdministrativeAreaName"] rescue nil
     end
     
     ##
@@ -100,7 +100,7 @@ module Geocoder
     # @return [String] zipcode
     def zipcode
       @zipcode ||= @hash["AddressDetails"]["Country"]["AdministrativeArea"]\
-                        ["Locality"]["PostalCode"]["PostalCodeNumber"]
+                   ["Locality"]["PostalCode"]["PostalCodeNumber"] rescue nil
     end
     
     ##
@@ -108,7 +108,8 @@ module Geocoder
     #
     # @return [String] country
     def country
-      @country ||= @hash["AddressDetails"]["Country"]["CountryNameCode"]
+      @country ||= @hash["AddressDetails"]["Country"]["CountryNameCode"]\
+                   rescue nil
     end
     
     ##
@@ -120,7 +121,8 @@ module Geocoder
     # @see accuracy_map
     # @return [String] accuracy
     def accuracy
-      @accuracy ||= accuracy_map[@hash["AddressDetails"]["Accuracy"].to_i]
+      @accuracy ||= accuracy_map[@hash["AddressDetails"]["Accuracy"].to_i]\
+                    rescue nil
     end
     
     ##
@@ -138,7 +140,7 @@ module Geocoder
     #
     # @return [Float] latitude
     def lat
-      @lat ||= @hash["Point"]["coordinates"][0].to_f
+      @lat ||= @hash["Point"]["coordinates"][0].to_f rescue nil
     end
     
     ##
@@ -146,7 +148,7 @@ module Geocoder
     #
     # @return [Float] longitude
     def lng
-      @lng ||= @hash["Point"]["coordinates"][1].to_f
+      @lng ||= @hash["Point"]["coordinates"][1].to_f rescue nil
     end
     
     ##
@@ -154,7 +156,7 @@ module Geocoder
     #
     # @return [Float] elevation
     def elevation
-      @elevation ||= @hash["Point"]["coordinates"][2].to_f
+      @elevation ||= @hash["Point"]["coordinates"][2].to_f rescue nil
     end
     
     private
@@ -166,5 +168,6 @@ module Geocoder
     def accuracy_map
       %w{ unknown country state county city zip zip+4 street address }
     end
+
   end
 end
