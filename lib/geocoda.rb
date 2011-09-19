@@ -1,7 +1,7 @@
 require 'patron'
 require 'json'
-module Geocoder
-  
+module Geocoda
+
   class Error < StandardError; end
   class ServerError  < Error; end
   class AddressError < Error; end
@@ -13,34 +13,34 @@ module Geocoder
   class TooManyQueriesError < MapKeyError; end
   class UnknownError < Error; end
   class ConnectionError < Error; end
-  
+
   ##
   # The current version of the application
   def self.version
     "0.0.3"
   end
-  
+
   ##
   # Search for addresses that match a string
   #
-  # @see Geocoder::Client#search
+  # @see Geocoda::Client#search
   def self.search(address,key=nil)
     Client.new(key).search(address)
   end
-  
+
   ##
   # Search for the first address that matches a string
   #
-  # @see Geocoder::Client#first
+  # @see Geocoda::Client#first
   def self.first(address,key=nil)
     search(address,key).first
   end
-  
+
 end
 
 require File.join(
-  File.expand_path(File.dirname(__FILE__)), 'geocoder', 'client'
+  File.expand_path(File.dirname(__FILE__)), 'geocoda', 'client'
 )
 require File.join(
-  File.expand_path(File.dirname(__FILE__)), 'geocoder', 'response'
+  File.expand_path(File.dirname(__FILE__)), 'geocoda', 'response'
 )

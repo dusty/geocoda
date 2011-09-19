@@ -11,26 +11,26 @@ json
 
 == INSTALL:
 
-$ gem build geocoder.gemspec
-$ sudo gem install geocoder-x.x.x.gem
+$ gem build geocoda.gemspec
+$ sudo gem install geocoda-x.x.x.gem
 
 
 == USAGE:
 
-Geocoder.search('123 My St, MyCity, NY')
+Geocoda.search('123 My St, MyCity, NY')
  # returns an array of addresses or throws an exception
- 
-Geocoder.first('123 My St, MyCity, NY')
+
+Geocoda.first('123 My St, MyCity, NY')
  # returns a single address or throws an exception
- 
-See Geocoder::Response.check_status for errors thrown depending on the results
-Errors in the HTTP call throw a Geocoder::ConnectionError
+
+See Geocoda::Response.check_status for errors thrown depending on the results
+Errors in the HTTP call throw a Geocoda::ConnectionError
 
 Your google API key is required.  You may set this in one of two ways.
 
-1. Set the class variable with Geocoder::Client.key = 'xxxxxx'
- $ Geocoder.search('My Address') # uses default key
- 
+1. Set the class variable with Geocoda::Client.key = 'xxxxxx'
+ $ Geocoda.search('My Address') # uses default key
+
 2. Send the key with your searches
- $ Geocoder.search('My Address', key) # uses defined key
- 
+ $ Geocoda.search('My Address', key) # uses defined key
+

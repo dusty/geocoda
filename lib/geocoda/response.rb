@@ -1,4 +1,4 @@
-module Geocoder
+module Geocoda
   
   class Response
     attr_reader :json

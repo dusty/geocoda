@@ -1,29 +1,29 @@
-module Geocoder
-  
+module Geocoda
+
   class Client
-    
+
     ##
     # Returns the default key
     def self.key
-      @key ||= raise(MapKeyError, 'Missing Key: Geocoder::Client.key=(key)')
+      @key ||= raise(MapKeyError, 'Missing Key: Geocoda::Client.key=(key)')
     end
-  
+
     ##
     # Sets the default key
     def self.key=(key)
       @key = key
     end
-  
+
     ##
     # Initialize the Client
-    # 
+    #
     # If the key is passed it will be used in place of the default key
     def initialize(key=nil)
       @key ||= self.class.key
       @http = Patron::Session.new
       @http.base_url = 'http://maps.google.com/maps/geo'
     end
-  
+
     ##
     # Search for addresses that match a string
     #
@@ -41,20 +41,20 @@ module Geocoder
       end
       Response.new(response.body).addresses
     end
-    
+
     ##
     # Search for the first address that matches a string
     #
-    # @see Geocoder::Client#search
+    # @see Geocoda::Client#search
     # @param [String] Address required for search
     # @return [Address] An address object
     # @raise [StandardError] on errors
     def first(address)
       search.first
     end
-  
+
     private
-  
+
     ##
     # Set the default parameters to use in searches
     def default_params
@@ -75,7 +75,7 @@ module Geocoder
       end.join("&")
       "?#{output}"
     end
-  
+
   end
-  
-end    
+
+end
