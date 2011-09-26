@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name = "geocoda"
-  s.version = "0.0.1"
+  s.version = "0.0.4"
   s.author = "Dusty Doris"
   s.email = "github@dusty.name"
   s.homepage = "https://github.com/dusty/geocoda"
@@ -16,6 +16,6 @@ Gem::Specification.new do |s|
   s.has_rdoc = true
   s.extra_rdoc_files = ["README.txt"]
   s.add_dependency('json')
-  s.add_dependency('patron')
+  s.add_dependency('net-http-persistent')
   s.rubyforge_project = "none"
 end
