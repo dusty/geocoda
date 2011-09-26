@@ -1,5 +1,11 @@
-require 'patron'
+require 'net/http/persistent'
 require 'json'
+require 'uri'
+
+$LOAD_PATH << "./lib"
+require 'geocoda/client'
+require 'geocoda/response'
+
 module Geocoda
 
   class Error < StandardError; end
@@ -17,7 +23,7 @@ module Geocoda
   ##
   # The current version of the application
   def self.version
-    "0.0.3"
+    "0.0.4"
   end
 
   ##
@@ -37,10 +43,3 @@ module Geocoda
   end
 
 end
-
-require File.join(
-  File.expand_path(File.dirname(__FILE__)), 'geocoda', 'client'
-)
-require File.join(
-  File.expand_path(File.dirname(__FILE__)), 'geocoda', 'response'
-)

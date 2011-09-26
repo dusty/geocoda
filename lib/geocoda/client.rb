@@ -5,7 +5,7 @@ module Geocoda
     ##
     # Returns the default key
     def self.key
-      @key ||= raise(MapKeyError, 'Missing Key: Geocoda::Client.key=(key)')
+      @key ||= ""
     end
 
     ##
@@ -20,8 +20,8 @@ module Geocoda
     # If the key is passed it will be used in place of the default key
     def initialize(key=nil)
       @key ||= self.class.key
-      @http = Patron::Session.new
-      @http.base_url = 'http://maps.google.com/maps/geo'
+      @http = Net::HTTP::Persistent.new
+      @url  = 'http://maps.google.com/maps/geo'
     end
 
     ##
@@ -32,12 +32,12 @@ module Geocoda
     # @raise [StandardError] on errors
     def search(address)
       begin
-        response = @http.get(hash_to_string(:q => address))
+        response = @http.request(URI.parse(@url + hash_to_string(:q => address)))
       rescue StandardError => e
         raise(ConnectionError, e.message)
       end
-      unless response.status == 200
-        raise(ConnectionError, "Response Code: #{response.status}")
+      unless response.code == "200"
+        raise(ConnectionError, "Response Code: #{response.code}")
       end
       Response.new(response.body).addresses
     end
